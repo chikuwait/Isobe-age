@@ -1,0 +1,49 @@
+diff --git a/compel/src/lib/infect.c b/compel/src/lib/infect.c
+index ecc6599..1c60951 100644
+--- a/compel/src/lib/infect.c
++++ b/compel/src/lib/infect.c
+@@ -115,6 +115,13 @@ int compel_interrupt_task(int pid)
+ {
+        int ret;
+
++  ret = ptrace(PTRACE_DETACH, pid, NULL,0);
++  if (ret) {
++               pr_warn("detached failed : %d (%s)\n", pid, strerror(errno));
++  } else {
++               pr_warn("already attached, detached: %d\n", pid);
++  }
++
+        ret = ptrace(PTRACE_SEIZE, pid, NULL, 0);
+        if (ret) {
+                /*
+diff --git a/criu/cr-dump.c b/criu/cr-dump.c
+index 7ceff4c..b5373ba 100644
+--- a/criu/cr-dump.c
++++ b/criu/cr-dump.c
+@@ -728,7 +728,6 @@ static int dump_task_core_all(struct parasite_ctl *ctl,
+        CoreEntry *core = item->core[0];
+        pid_t pid = item->pid->real;
+        int ret = -1;
+-       struct proc_status_creds *creds;
+        struct parasite_dump_cgroup_args cgroup_args, *info = NULL;
+
+        BUILD_BUG_ON(sizeof(cgroup_args) < PARASITE_ARG_SIZE_MIN);
+@@ -741,18 +740,6 @@ static int dump_task_core_all(struct parasite_ctl *ctl,
+        if (ret < 0)
+                goto err;
+
+-       creds = dmpi(item)->pi_creds;
+-       if (creds->s.seccomp_mode != SECCOMP_MODE_DISABLED) {
+-               pr_info("got seccomp mode %d for %d\n", creds->s.seccomp_mode, vpid(item));
+-               core->tc->has_seccomp_mode = true;
+-               core->tc->seccomp_mode = creds->s.seccomp_mode;
+-
+-               if (creds->s.seccomp_mode == SECCOMP_MODE_FILTER) {
+-                       core->tc->has_seccomp_filter = true;
+-                       core->tc->seccomp_filter = creds->last_filter;
+-               }
+-       }
+-
+        strlcpy((char *)core->tc->comm, stat->comm, TASK_COMM_LEN);
+        core->tc->flags = stat->flags;
+        core->tc->task_state = item->pid->state;

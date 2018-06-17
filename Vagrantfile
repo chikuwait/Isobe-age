@@ -5,4 +5,8 @@ Vagrant.configure("2") do |config|
     vb.cpus = 2
     vb.memory = '4096'
  end
+ config.vm.provision 'shell', inline: <<-SHELL
+        git clone -b mitamae https://github.com/chikuwait/Isobe-age.git
+        chmod 755 /home/vagrant/Isobe-age
+ SHELL
 end

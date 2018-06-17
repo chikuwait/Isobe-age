@@ -1,0 +1,19 @@
+diff --git a/build_config.rb b/build_config.rb
+index 1429837..d4bace8 100644
+--- a/build_config.rb
++++ b/build_config.rb
+@@ -23,6 +23,14 @@ MRuby::Build.new do |conf|
+
+   # include the default GEMs
+   conf.gembox 'default'
++  conf.gem :git => 'https://github.com/matsumoto-r/mruby-sleep.git'
++  conf.gem :github => 'chikuwait/mruby-seccomp'
++  conf.gem :github => 'haconiwa/mruby-exec'
++  conf.gem :github => 'iij/mruby-process'
++  conf.gem :github => 'iij/mruby-socket'
++  conf.gem :github => 'iij/mruby-env'
++  conf.gem :github => 'matsumotory/mruby-simplehttpserver'
++  conf.gem :git => 'https://github.com/matsumoto-r/mruby-criu.git'
+   # C compiler settings
+   # conf.cc do |cc|
+   #   cc.command = ENV['CC'] || 'gcc'

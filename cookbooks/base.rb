@@ -1,3 +1,4 @@
-%w(apt-update.rb rbenv::system ruby_build.rb criu.rb).each do |resource|
-  include_recipe "#{resource}"
-end
+include_recipe "apt.rb"
+include_recipe "ruby.rb"
+include_recipe "criu.rb"
+include_recipe "mruby.rb"
