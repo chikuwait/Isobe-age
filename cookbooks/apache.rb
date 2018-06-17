@@ -17,11 +17,27 @@ execute "patch -u --ignore-whitespace < envvars.patch" do
   cwd APACHE_DIR
   user "root"
 end
-execute "mkdir /home/vagrant/var/"
-execute "mkdir /home/vagrant/var/lock"
-execute "mkdir /home/vagrant/var/lock/apache2"
-execute "mkdir /home/vagrant/var/apache2"
-execute "mkdir /home/vagrant/var/log"
+execute "mkdir /home/vagrant/var/"do
+  user "vagrant"
+end
+execute "mkdir /home/vagrant/var/lock" do
+  user "vagrant"
+end
+execute "mkdir /home/vagrant/var/lock/apache2"do
+  user "vagrant"
+end
+execute "mkdir /home/vagrant/var/log"do
+  user "vagrant"
+end
+execute "mkdir /home/vagrant/var/log/apache2"do
+  user "vagrant"
+end
+execute "mkdir /home/vagrant/var/run"do
+  user "vagrant"
+end
+execute "mkdir /home/vagrant/var/run/apache2"do
+  user "vagrant"
+end
 execute "usermod -aG www-data vagrant"do
   user "root"
 end
