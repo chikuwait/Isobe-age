@@ -1,3 +1,3 @@
-execute "apt -y install apache" do
+execute "apt -y install apache2" do
   user "root"
 end
