@@ -9,6 +9,11 @@ end
 remote_file "#{APACHE_DIR}/envvars.patch" do
   source "../file/envvars.patch"
 end
+remote_file "/home/vagrant/dump.rb" do
+  source "../file/dump.rb"
+  user "vagrant"
+end
+
 execute "patch -u --ignore-whitespace < ports.patch" do
   cwd APACHE_DIR
   user "root"
