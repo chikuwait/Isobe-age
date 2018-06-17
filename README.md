@@ -1,11 +1,15 @@
 # Isobe-age
-![isobeage](https://2.bp.blogspot.com/-mzU0vENiAxw/V0QndHK-zxI/AAAAAAAA65g/9PpG-9ftzUQasY9Bqw9gC2jWpKcGUEofQCLcB/s800/food_isobeage.png)   
 *** 
 chikuwait's development environment  
-
+## local
 ```
-bundle install --path vendor/bundle
-vagrant up
-bundle exec itamae ssh --vagrant --node-json=node.json cookbooks/base.rb
+git clone −b apache-criu git@github.com:chikuwait/Isobe-age
+cd Isobe-age
+vagrant up --provision
 vagrant ssh
+```
+## vagrant
+```
+cd Isobe-age
+sudo ./install.sh
 ```
