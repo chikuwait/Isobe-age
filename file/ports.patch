@@ -1,11 +1,11 @@
---- /etc/apache2/ports.conf     2018-06-17 03:34:49.526088002 +0000
-+++ ports.conf  2018-06-17 03:34:39.981318000 +0000
+--- ports.conf  2018-06-17 03:34:39.981318000 +0000
++++ /etc/apache2/ports.conf     2018-06-17 03:34:49.526088002 +0000
 @@ -2,7 +2,7 @@
  # have to change the VirtualHost statement in
  # /etc/apache2/sites-enabled/000-default.conf
 
--Listen 8000
-+Listen 80
+-Listen 80
++Listen 8000
 
  <IfModule ssl_module>
         Listen 443
