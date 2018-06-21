@@ -141,8 +141,8 @@
 -
 -# Include module configuration:
 +Listen 10000
-+#User www-data
-+#Group www-data
++User www-data
++Group www-data
  IncludeOptional mods-enabled/*.load
  IncludeOptional mods-enabled/*.conf
 
