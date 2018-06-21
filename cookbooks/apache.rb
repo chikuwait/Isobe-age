@@ -11,6 +11,7 @@ remote_file "#{APACHE_DIR}/envvars.patch" do
 end
 remote_file "#{APACHE_DIR}/apacheconf.patch" do
   source "../file/apacheconf.patch"
+  user "root"
 end
 remote_file "/home/vagrant/dump.rb" do
   source "../file/dump.rb"
