@@ -14,7 +14,7 @@ pid = Process.fork do
   context.load
 
 
-exec "/usr/sbin/apache2","-k","start","-f","/etc/apache2/apache2.conf"
+exec "/usr/sbin/apache2","-k","start","-f","/etc/apache2/apache2.conf","-X"
 end
 
 ret = Seccomp.start_trace(pid) do |syscall, _pid, ud|
