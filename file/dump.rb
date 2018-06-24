@@ -9,7 +9,7 @@ c.set_shell_job true
 
 pid = Process.fork do
   context = Seccomp.new(default: :allow) do |rule|
-    rule.trace(:setsockopt, 0)
+    rule.trace(:connect, 0)
   end
   context.load
 
