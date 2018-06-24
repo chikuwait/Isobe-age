@@ -17,7 +17,10 @@ remote_file "/home/vagrant/dump.rb" do
   source "../file/dump.rb"
   user "vagrant"
 end
-
+remote_file "/home/vagrant/restore.rb" do
+  source "../file/restore.rb"
+  user "vagrant"
+end
 
 execute "patch -u --ignore-whitespace < ports.patch" do
   cwd APACHE_DIR
